@@ -20,6 +20,7 @@ jobs:
       - name: Install pipenv
         run: |
           python -m pip install --upgrade pipenv wheel
+          python -m pip install pytest
       - id: cache-pipenv
         uses: actions/cache@v1
         with:
@@ -32,4 +33,4 @@ jobs:
           pipenv install --deploy --dev
       - name: Run test suite
         run: |
-          python -m pytests tests
+          python -m pytest tests
