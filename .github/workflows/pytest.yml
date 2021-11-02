@@ -30,7 +30,7 @@ jobs:
       - name: Install dependencies
         if: steps.cache-pipenv.outputs.cache-hit != 'true'
         run: |
-          pipenv install --deploy --dev
+          python -m pip install requirements.txt
       - name: Run test suite
         run: |
           python -m pytest tests
