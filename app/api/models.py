@@ -2,15 +2,21 @@ from app import db
 from enum import Enum, auto
 
 
-class Board(db.Model):
+class Grid(db.Model):
+    __tablename__ = 'grids'
     id = db.Column(db.Integer, primary_key=True)
 
-    # TODO: represent grid
-    start_grid = db.Column()
-    game_grid = db.Column()
+    start_grid = db.Column(db.String(100))
+    game_grid = db.Column(db.String(100))
 
-    player = db.relationship('Player', back_populates='board')
+    player = db.relationship('Player', back_populates='grid')
     player_id = db.Column(db.Integer, db.ForeignKey('players.id'))
+
+    def __init__(self, start_grid):
+        self.validate_game_grid(start_grid)
+
+        super().__init__(start_grid=start_grid,
+                         game_grid=start_grid)
 
     def can_attack(self):
         pass
@@ -18,7 +24,7 @@ class Board(db.Model):
     def attack(self):
         pass
 
-    def validate_game_grid(self):
+    def validate_game_grid(self, grid):
         pass
 
 
@@ -26,7 +32,7 @@ class Player(db.Model):
     __tablename__ = 'players'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
-    board = db.relationship('Board', back_populates='player', uselist=False)
+    grid = db.relationship('Grid', back_populates='player', uselist=False)
     game_id = db.Column(db.Integer, db.ForeignKey('games.id'))
     game = db.relationship('Game', back_populates='players')
 
@@ -50,7 +56,7 @@ class Game(db.Model):
 
     def __init__(self):
         super().__init__()
-        self.state = self.GameState.WAITING
+        self.state = GameState.WAITING
 
     def save(self):
         db.session.add(self)
@@ -63,4 +69,7 @@ class Game(db.Model):
         pass
 
     def winner(self):
+        pass
+
+    def save_to_db(self):
         pass
