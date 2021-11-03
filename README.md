@@ -62,7 +62,10 @@ Make sure the API is running locally with flask run
 python -m pytest tests
 ```
 
+The API is accessible at localhost:5000/api/games/
+
 # Routes / Examples
+```
 api.create_game   POST     /api/games/
 api.game_status   GET      /api/games/
 api.make_move     PATCH    /api/games/
@@ -74,8 +77,11 @@ auth.signup_post  POST     /signup
 main.index        GET      /
 main.profile      GET      /profile
 static            GET      /static/<path:filename>
+```
 
 example:
+
+
 player 1 starts a game
 ```
 grid = "CCCCC.....BBBB......RRR.......SSS.......DD.........................................................."
