@@ -8,27 +8,27 @@ We have the following cards: Board, Player, Game
 
 ## Board
 Responsibility:
-The board should represent the state of the board.
-The board should validate the board.
+* The board should represent the state of the board.
+* The board should validate the board.
 
 Collaboration:
-A board has players
+* A board has players
 
 ## Player
 Responsibility:
-The player ties the game and the board together
+* The player ties the game and the board together
 
 Collaboration:
-A player has a game
+* A player has a game
 
 ## Game
 Responsibility:
-Couple players and their action
-When both players are in a game, they shoot in turns untill one of the players has no ships.
-At first game is a NEW State. After another player joins in, it is in PLAYING state. When one of the players has no ships left it switches to the FINISHED state.
+* Couple players and their action
+* When both players are in a game, they shoot in turns untill one of the players has no ships.
+* At first game is a NEW State. After another player joins in, it is in PLAYING state. When one of the players has no ships left it switches to the FINISHED state.
 
 Collaboration:
-A game has a Player
+* A game has a Player
 
 # Enity Diagrams
 ![enitity-diagram](https://user-images.githubusercontent.com/15825757/140053838-186432c3-1872-40d6-aa6a-2bed2f47ba40.png)
