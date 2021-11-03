@@ -1,5 +1,5 @@
 # Battleship-API
-SphereMall Assignment: Battleship API v1
+Assignment: Battleship API v1
 
 # Design
 
